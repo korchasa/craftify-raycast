@@ -1,0 +1,75 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "craftify",
+  "title": "Craftify",
+  "description": "Some useful tools for your daily work",
+  "icon": "extension-icon-512x512.png",
+  "author": "stanislav_korchagin",
+  "categories": [
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "to-main",
+      "title": "-> Main",
+      "description": "Translate text from any language to Main Language or Main Language to Second Language",
+      "mode": "no-view"
+    },
+    {
+      "name": "to-bg",
+      "title": "-> Bulgarian",
+      "description": "Translate text any language To Bulgarian",
+      "mode": "no-view"
+    },
+    {
+      "name": "to-ua",
+      "title": "-> Ukrainian",
+      "description": "Translate text any language To Ukrainian",
+      "mode": "no-view"
+    },
+    {
+      "name": "fix-text",
+      "title": "Fix Text Errors",
+      "description": "Fix errors in text",
+      "mode": "no-view"
+    },
+    {
+      "name": "explain",
+      "title": "Explain Text",
+      "description": "Explain text in simple words by professional",
+      "mode": "no-view"
+    },
+    {
+      "name": "summarize",
+      "title": "Summarize Text",
+      "description": "Summarize text",
+      "mode": "no-view"
+    }
+  ],
+  "dependencies": {
+    "@agentic/stdlib": "^7.3.2",
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@raycast/api": "^1.93.1",
+    "@raycast/utils": "^1.17.0",
+    "openai": "^4.86.1",
+    "zod": "^3.25.55"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.11",
+    "@types/node": "20.8.10",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
