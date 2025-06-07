@@ -1,6 +1,19 @@
-# Craftify
+---
+description:
+globs:
+alwaysApply: false
+---
+# Goal
+
+Ты разрабатываешь проект Craftify.
 
 Craftify — это набор полезных инструментов для повышения продуктивности прямо в Raycast. Расширение использует OpenAI и другие LLM для перевода, исправления, объяснения и суммирования текста, а также для работы с субтитрами YouTube.
+
+## Основные используемые библиотеки и их документация
+
+- @raycast/api https://developers.raycast.com/api-reference — API Raycast для создания расширений
+- youtube-transcript https://www.npmjs.com/package/youtube-transcript — Получение субтитров с YouTube
+- @agentic/stdlib https://www.npmjs.com/package/@agentic/stdlib — Утилиты для работы с LLM и агентами
 
 ## Возможности
 
@@ -33,21 +46,3 @@ Craftify — это набор полезных инструментов для 
 ### `youtube-captions`
 Скачивает субтитры с YouTube по ссылке, переводит их на основной язык и выводит результат в виде markdown.
 
-## Использование
-
-1. Выделите текст в любой программе.
-2. Вызовите нужную команду через Raycast (например, «Summarize Text», «Fix Text Errors» и т.д.).
-3. Результат будет скопирован в буфер обмена или показан в окне Raycast (в зависимости от команды).
-
-## Зависимости
-
-- [@raycast/api](https://www.npmjs.com/package/@raycast/api)
-- [openai](https://www.npmjs.com/package/openai)
-- [youtube-transcript](https://www.npmjs.com/package/youtube-transcript)
-- [zod](https://www.npmjs.com/package/zod)
-- [@agentic/stdlib](https://www.npmjs.com/package/@agentic/stdlib)
-- [@anthropic-ai/sdk](https://www.npmjs.com/package/@anthropic-ai/sdk)
-
-## Лицензия
-
-MIT

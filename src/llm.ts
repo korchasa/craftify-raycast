@@ -41,6 +41,22 @@ export class LLM {
   }
 
   // Structured completion (JSON output, validated)
+  async complete(systemPrompt: string, userText: string, options?: Partial<CompletionOptions>): Promise<string> {
+    const mergedOptions = {
+      model: mainModel,
+      temperature: 0.1,
+      max_tokens: 4096,
+      ...options,
+    };
+    const messages = [Msg.system(systemPrompt), Msg.user(userText)];
+    const response = await this.openai.chat.completions.create({
+      ...mergedOptions,
+      messages,
+    });
+    return response.choices[0]?.message?.content ?? "";
+  }
+
+  // Structured completion (JSON output, validated)
   async completeStructured<T>(
     systemPrompt: string,
     userText: string,
@@ -58,5 +74,31 @@ export class LLM {
     });
     const content = response.choices[0]?.message?.content ?? "";
     return schema.parse(JSON.parse(content));
+  }
+
+  // Streaming completion (yields text chunks as they arrive)
+  async *streamComplete(
+    systemPrompt: string,
+    userText: string,
+    options?: Partial<CompletionOptions>,
+  ): AsyncGenerator<string, void, unknown> {
+    const mergedOptions = {
+      model: mainModel,
+      temperature: 0.1,
+      max_tokens: 4096,
+      ...options,
+    };
+    const messages = [Msg.system(systemPrompt), Msg.user(userText)];
+    const stream = await this.openai.chat.completions.create({
+      ...mergedOptions,
+      messages,
+      stream: true,
+    });
+    for await (const part of stream) {
+      const delta = part.choices[0]?.delta?.content;
+      if (delta) {
+        yield delta;
+      }
+    }
   }
 }

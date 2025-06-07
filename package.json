@@ -38,13 +38,19 @@
       "name": "explain",
       "title": "Explain Text",
       "description": "Explain text in simple words by professional",
-      "mode": "no-view"
+      "mode": "view"
     },
     {
       "name": "summarize",
       "title": "Summarize Text",
       "description": "Summarize text",
       "mode": "no-view"
+    },
+    {
+      "name": "youtube-captions",
+      "title": "Youtube Captions to Text",
+      "description": "Скачать субтитры с YouTube и перевести их в нормальный текст на основном языке (mainLanguage)",
+      "mode": "view"
     }
   ],
   "dependencies": {
@@ -53,6 +59,7 @@
     "@raycast/api": "^1.93.1",
     "@raycast/utils": "^1.17.0",
     "openai": "^4.86.1",
+    "youtube-transcript": "^1.2.1",
     "zod": "^3.25.55"
   },
   "devDependencies": {

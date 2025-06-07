@@ -1,4 +1,0 @@
-const mainModel = "gpt-4.1-mini";
-const openaiToken = "...";
-
-export { mainModel, openaiToken };

@@ -1,6 +1,7 @@
 import { getSelectedText, showToast, Toast, showHUD } from "@raycast/api";
 import { LLM } from "./llm";
 import { Detail } from "@raycast/api";
+import { mainLanguage } from "./config";
 
 export default async function Command() {
   try {
@@ -10,38 +11,38 @@ export default async function Command() {
 
     const prompt = `###ИНСТРУКЦИИ###
 
-Ты ДОЛЖЕН ВСЕГДА:
-- Отвечать на русском языке
-- У меня нет возможности заполнять шаблоны. НИКОГДА не используй заполнители или не опускай код
-- Ты будешь НАКАЗАН за неправильные ответы
-- НИКОГДА НЕ ВЫДУМЫВАЙ
-- Ты НЕ ДОЛЖЕН игнорировать критический контекст
-- ВСЕГДА следуй ###Правилам ответа###
+You MUST ALWAYS:
+- Respond in ${mainLanguage}
+- I do not have the ability to fill templates. NEVER use placeholders or omit code
+- You will be PUNISHED for incorrect answers
+- NEVER MAKE THINGS UP
+- You MUST NOT ignore critical context
+- ALWAYS follow ###Response Rules###
 
-###Правила ответа###
+###Response Rules###
 
-Следуй в строгом порядке:
+Follow strictly in order:
 
-1. Назначь себе роль реального эксперта перед ответом, например, "Я отвечу как всемирно известный эксперт по <конкретная область> с <самая престижная РЕАЛЬНАЯ награда в этой области>"
-2. Дай КОНКРЕТНОЕ и ПОЛЕЗНОЕ объяснение для предоставленного текста простым языком
-3. Объедини свои глубокие знания темы и ясное мышление, чтобы быстро и точно объяснить текст шаг за шагом с КОНКРЕТНЫМИ деталями
-4. Твой ответ критически важен для моего понимания
-5. Отвечай естественным, человеческим языком, в формате markdown
-6. ВСЕГДА используй ##Пример ответа## для структуры первого сообщения
+1. Assign yourself the role of a real expert before answering, for example, "I will answer as a world-renowned expert in <specific field> with <the most prestigious REAL award in this field>"
+2. Give a CONCRETE and USEFUL explanation of the provided text in simple language
+3. Combine your deep knowledge of the topic and clear thinking to quickly and accurately explain the text step by step with SPECIFIC details
+4. Your answer is critically important for my understanding
+5. Respond in a natural, human language, in markdown format
+6. ALWAYS use ##Example answer## for the structure of the first message
 
-##Пример ответа##
+##Example answer##
 
-<Я отвечу как всемирно известный эксперт по %РЕАЛЬНАЯ конкретная область% с %самая престижная РЕАЛЬНАЯ награда%>
+<I will answer as a world-renowned expert in %REAL specific field% with %the most prestigious REAL award%>
 
-**Краткое объяснение**: <1-2 предложения, суть текста>
+**Brief explanation**: <1-2 sentences, the essence of the text>
 
-<Подробное объяснение текста с разбором по смыслу, ключевым идеям и контексту. Включи толкование сложных терминов или концепций.>
+<Detailed explanation of the text with analysis by meaning, key ideas, and context. Include interpretation of complex terms or concepts.>
 `;
     const userText = await getSelectedText();
 
     const { result } = (await llm.completeStructured(prompt, userText)) as { result: string };
 
-    return <Detail markdown="${result}" />;
+    return <Detail markdown={result} />;
   } catch (error) {
     await showToast({
       style: Toast.Style.Failure,
