@@ -11,9 +11,9 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "to-main",
-      "title": "-> Main",
-      "description": "Translate text from any language to Main Language or Main Language to Second Language",
+      "name": "to-en",
+      "title": "-> English",
+      "description": "Translate text from any language to English",
       "mode": "no-view"
     },
     {
@@ -49,7 +49,7 @@
     {
       "name": "youtube-captions",
       "title": "Youtube Captions to Text",
-      "description": "Скачать субтитры с YouTube и перевести их в нормальный текст на основном языке (mainLanguage)",
+      "description": "Download subtitles from YouTube and translate them into a normal text on the native language",
       "mode": "view"
     }
   ],
@@ -78,5 +78,30 @@
     "lint": "ray lint",
     "prepublishOnly": "echo \"\\n\\nIt seems like you are trying to publish the Raycast extension to npm.\\n\\nIf you did intend to publish it to npm, remove the \\`prepublishOnly\\` script and rerun \\`npm publish\\` again.\\nIf you wanted to publish it to the Raycast Store instead, use \\`npm run publish\\` instead.\\n\\n\" && exit 1",
     "publish": "npx @raycast/api@latest publish"
-  }
+  },
+  "preferences": [
+    {
+      "name": "mainModel",
+      "type": "textfield",
+      "title": "OpenAI Model",
+      "description": "OpenAI model to use for the extension",
+      "default": "gpt-4.1-mini",
+      "required": true
+    },
+    {
+      "name": "openaiToken",
+      "type": "password",
+      "title": "OpenAI API Token",
+      "description": "OpenAI API token to use for the extension",
+      "required": true
+    },
+    {
+      "name": "nativeLanguage",
+      "type": "textfield",
+      "title": "Native Language",
+      "description": "The language into which texts, summaries, explanations, and so on will be translated",
+      "default": "russian",
+      "required": true
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 import { getSelectedText, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./llm";
+import { LLM } from "./services/llm";
 import { Detail } from "@raycast/api";
-import { mainLanguage } from "./config";
+import { nativeLanguage } from "./config";
 
 export default async function Command() {
   try {
@@ -12,7 +12,7 @@ export default async function Command() {
     const prompt = `###ИНСТРУКЦИИ###
 
 You MUST ALWAYS:
-- Respond in ${mainLanguage}
+- Respond in ${nativeLanguage}
 - I do not have the ability to fill templates. NEVER use placeholders or omit code
 - You will be PUNISHED for incorrect answers
 - NEVER MAKE THINGS UP

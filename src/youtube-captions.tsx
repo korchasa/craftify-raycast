@@ -1,8 +1,8 @@
 import { Form, ActionPanel, Action, showToast, Toast, Detail, useNavigation } from "@raycast/api";
 import { useState } from "react";
 import { YoutubeTranscript } from "youtube-transcript";
-import { StreamingDetail } from "./StreamingDetail";
-import { mainLanguage } from "./config";
+import { StreamingDetail } from "./services/StreamingDetail";
+import { nativeLanguage } from "./config";
 
 async function fetchYoutubeTranscript(url: string, attempts = 3): Promise<string> {
   let lastError = null;
@@ -31,14 +31,8 @@ export default function Command() {
     setIsLoading(true);
     try {
       const text = await fetchYoutubeTranscript(values.url);
-      const prompt = `You are an expert writer. Read this youtube video captions and rewrite it in ${mainLanguage} language.`;
-      push(
-        <StreamingDetail
-          prompt={prompt}
-          text={text}
-          onDone={() => setIsLoading(false)}
-        />
-      );
+      const prompt = `You are an expert writer. Read this youtube video captions and rewrite it in ${nativeLanguage} language.`;
+      push(<StreamingDetail prompt={prompt} text={text} onDone={() => setIsLoading(false)} />);
     } catch (error) {
       console.error("YouTube Captions Error:", error);
       await showToast({

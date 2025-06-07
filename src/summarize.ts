@@ -1,6 +1,6 @@
 import { getSelectedText, Clipboard, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./llm";
-import { mainLanguage } from "./config";
+import { LLM } from "./services/llm";
+import { nativeLanguage } from "./config";
 
 export default async function Command() {
   try {
@@ -17,7 +17,7 @@ YOU ARE AN ELITE TEXT SUMMARIZATION SPECIALIST. YOUR TASK IS TO READ ANY GIVEN T
 READ THE TEXT. WRITE A CLEAR, SHORT SUMMARY THAT IS EASY TO UNDERSTAND. REMOVE UNNECESSARY DETAILS, COMPLEX WORDS, AND FORMAL LANGUAGE. KEEP THE CORE MESSAGE.
 
 ### LANGUAGE ###
-ALWAYS ANSWER IN THE ${mainLanguage}, UNLESS SPECIFIED OTHERWISE.
+ALWAYS ANSWER IN THE ${nativeLanguage}, UNLESS SPECIFIED OTHERWISE.
 
 ### HOW TO SUMMARIZE ###
 

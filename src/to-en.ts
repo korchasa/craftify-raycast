@@ -1,6 +1,6 @@
 import { getSelectedText, Clipboard, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./llm";
-import { mainLanguage, secondLanguage } from "./config";
+import { LLM } from "./services/llm";
+import { nativeLanguage } from "./config";
 
 export default async function Command() {
   try {
@@ -20,8 +20,8 @@ FOLLOW these INSTRUCTIONS carefully for translating the text:
 1. READ the provided text in the user's message.
 2. Process the sentences one by one, according to the algorithm:
   - Determine the language of the sentence.
-  - If the sentence is in ${mainLanguage}, translate it into ${secondLanguage}.
-  - If the sentence is NOT in ${mainLanguage}, translate it into ${mainLanguage}.
+  - If the sentence is in ${nativeLanguage}, translate it into english.
+  - If the sentence is NOT in ${nativeLanguage}, translate it into ${nativeLanguage}.
 3. Return your answer as a JSON object with one field:
    - "result": the translated text
 
@@ -51,8 +51,3 @@ Your answer:
     });
   }
 }
-
-/*
-Hello world!
-
-*/

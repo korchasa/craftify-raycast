@@ -1,5 +1,5 @@
 import { getSelectedText, Clipboard, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./llm";
+import { LLM } from "./services/llm";
 
 export default async function Command() {
   try {
