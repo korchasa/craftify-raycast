@@ -1,17 +1,9 @@
-import { getSelectedText, Clipboard, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./services/llm";
+import { getSelectedText } from "@raycast/api";
 import { nativeLanguage } from "./config";
+import { DetailCommand } from "./services/detailCommand";
 
-export default async function Command() {
-  try {
-    const selectedText = await getSelectedText();
-    const llm = new LLM();
-
-    await showHUD("Summarizing text...");
-
-    const { result } = (await llm.completeStructured(
-      `
-YOU ARE AN ELITE TEXT SUMMARIZATION SPECIALIST. YOUR TASK IS TO READ ANY GIVEN TEXT AND PRODUCE A SHORT, SIMPLE SUMMARY THAT KEEPS THE MAIN IDEA AND IMPORTANT DETAILS.
+export default function Command() {
+  const prompt = `YOU ARE AN ELITE TEXT SUMMARIZATION SPECIALIST. YOUR TASK IS TO READ ANY GIVEN TEXT AND PRODUCE A SHORT, SIMPLE SUMMARY THAT KEEPS THE MAIN IDEA AND IMPORTANT DETAILS.
 
 ### YOUR MISSION ###
 READ THE TEXT. WRITE A CLEAR, SHORT SUMMARY THAT IS EASY TO UNDERSTAND. REMOVE UNNECESSARY DETAILS, COMPLEX WORDS, AND FORMAL LANGUAGE. KEEP THE CORE MESSAGE.
@@ -53,19 +45,6 @@ Due to severe weather conditions and ongoing maintenance work on the railway tra
 
 **Summary:**
 {"result": "Trains will not run between Central and East stations from April 10 to April 15 because of bad weather and repairs. Use other transport."}
-
-`,
-      selectedText,
-      { temperature: 0.3 },
-    )) as { result: string };
-
-    await Clipboard.paste(result);
-    await showHUD("Text summarized and copied to clipboard");
-  } catch (error) {
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Cannot summarize text",
-      message: String(error),
-    });
-  }
+`;
+  return <DetailCommand prompt={prompt} inputPromise={getSelectedText()} options={{ temperature: 0.3 }} />;
 }

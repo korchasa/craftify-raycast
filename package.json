@@ -45,12 +45,6 @@
       "title": "Summarize Text",
       "description": "Summarize text",
       "mode": "no-view"
-    },
-    {
-      "name": "youtube-captions",
-      "title": "Youtube Captions to Text",
-      "description": "Download subtitles from YouTube and translate them into a normal text on the native language",
-      "mode": "view"
     }
   ],
   "dependencies": {

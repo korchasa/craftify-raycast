@@ -1,15 +1,11 @@
-import { getSelectedText, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./services/llm";
-import { Detail } from "@raycast/api";
+import { getSelectedText } from "@raycast/api";
 import { nativeLanguage } from "./config";
+import { DetailCommand } from "./services/detailCommand";
 
-export default async function Command() {
-  try {
-    const llm = new LLM();
-
-    await showHUD("Explaining text...");
-
-    const prompt = `###ИНСТРУКЦИИ###
+export default function Command() {
+  return (
+    <DetailCommand
+      prompt={`###ИНСТРУКЦИИ###
 
 You MUST ALWAYS:
 - Respond in ${nativeLanguage}
@@ -36,18 +32,8 @@ Follow strictly in order:
 
 **Brief explanation**: <1-2 sentences, the essence of the text>
 
-<Detailed explanation of the text with analysis by meaning, key ideas, and context. Include interpretation of complex terms or concepts.>
-`;
-    const userText = await getSelectedText();
-
-    const { result } = (await llm.completeStructured(prompt, userText)) as { result: string };
-
-    return <Detail markdown={result} />;
-  } catch (error) {
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Cannot translate text",
-      message: String(error),
-    });
-  }
+<Detailed explanation of the text with analysis by meaning, key ideas, and context. Include interpretation of complex terms or concepts.>`}
+      inputPromise={getSelectedText()}
+    />
+  );
 }

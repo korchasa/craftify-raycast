@@ -1,14 +1,8 @@
-import { getSelectedText, Clipboard, showToast, Toast, showHUD } from "@raycast/api";
-import { LLM } from "./services/llm";
+import { textEditCommand } from "./services/textEditCommand";
 
 export default async function Command() {
-  try {
-    const selectedText = await getSelectedText();
-    const llm = new LLM();
-
-    await showHUD("Fixing text...");
-
-    const systemPrompt = `You will act as an EXPERT editor.
+  return textEditCommand({
+    prompt: `You will act as an EXPERT editor.
 
 ### INSTRUCTIONS ###
 FOLLOW these INSTRUCTIONS carefully for translating the text:
@@ -28,19 +22,10 @@ User message:
 Привит это саобщение с \`markdown\`, и <b>тегими</b>
 Your answer:
 {"result": "Привет, это сообщение с \`markdown\` и <b>тегами</b>"}
-`;
-
-    const { result } = (await llm.completeStructured(systemPrompt, selectedText, { temperature: 0.1 })) as {
-      result: string;
-    };
-
-    await Clipboard.paste(result);
-    await showHUD("Text fixed and copied to clipboard");
-  } catch (error) {
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Cannot fix text",
-      message: String(error),
-    });
-  }
+`,
+    options: { temperature: 0.1 },
+    hudMessage: "Fixing text...",
+    successMessage: "Text fixed and copied to clipboard",
+    errorMessage: "Cannot fix text",
+  });
 }

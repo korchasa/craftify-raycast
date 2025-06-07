@@ -1,15 +1,11 @@
-import { Clipboard, getSelectedText, showHUD, showToast, Toast } from "@raycast/api";
-import { LLM } from "./llm";
+import { textEditCommand } from "./textEditCommand";
 import { nativeLanguage } from "../config";
 
 /**
  * Translator: translates from the native language to the target language and back, depending on the input text.
- * @param selectedText text to translate
- * @param nativeLanguage user's native language (for example, "russian")
  * @param targetLanguage target language (for example, "english")
  * @param nativeLangExample example in the native language
  * @param targetLangExample example in the target language
- * @returns translated text
  */
 export async function translateCommand({
   targetLanguage,
@@ -45,17 +41,11 @@ Your answer:
 {"result": "${nativeLangExample}"}
 `;
 
-  try {
-    const selectedText = await getSelectedText();
-    await showHUD("Translating text...");
-    const llm = new LLM();
-    const { result } = await llm.completeStructured<{ result: string }>(prompt, selectedText, { temperature: 0.0 });
-    await Clipboard.paste(result);
-  } catch (error) {
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Cannot translate text: " + String(error),
-      message: String(error),
-    });
-  }
+  return textEditCommand({
+    prompt,
+    options: { temperature: 0.0 },
+    hudMessage: "Translating text...",
+    successMessage: "Text translated and copied to clipboard",
+    errorMessage: "Cannot translate text",
+  });
 }
