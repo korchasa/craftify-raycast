@@ -13,38 +13,44 @@
     {
       "name": "to-en",
       "title": "-> English",
-      "description": "Translate text from any language to English",
+      "description": "Translate selected text from any language to English and any other language to native language",
       "mode": "no-view"
     },
     {
       "name": "to-bg",
       "title": "-> Bulgarian",
-      "description": "Translate text any language To Bulgarian",
+      "description": "Translate selected text any language To Bulgarian and any other language to native language",
       "mode": "no-view"
     },
     {
       "name": "to-ua",
       "title": "-> Ukrainian",
-      "description": "Translate text any language To Ukrainian",
+      "description": "Translate selected text any language To Ukrainian and any other language to native language",
       "mode": "no-view"
     },
     {
       "name": "fix-text",
       "title": "Fix Text Errors",
-      "description": "Fix errors in text",
+      "description": "Fix errors in selected text",
       "mode": "no-view"
     },
     {
       "name": "explain",
       "title": "Explain Text",
-      "description": "Explain text in simple words by professional",
+      "description": "Explain texts, web pages, youtube videos, etc. in simple words by professional",
       "mode": "view"
     },
     {
       "name": "summarize",
-      "title": "Summarize Text",
-      "description": "Summarize text",
-      "mode": "no-view"
+      "title": "Summarize",
+      "description": "Summarize texts, web pages, youtube videos, etc.",
+      "mode": "view"
+    },
+    {
+      "name": "simplify",
+      "title": "Simplify",
+      "description": "Simplify texts, web pages, youtube videos, etc.",
+      "mode": "view"
     }
   ],
   "dependencies": {
@@ -53,6 +59,7 @@
     "@mozilla/readability": "^0.6.0",
     "@raycast/api": "^1.93.1",
     "@raycast/utils": "^1.17.0",
+    "@wrtnlabs/web-content-extractor": "^3.2.4",
     "jsdom": "^26.1.0",
     "node-fetch": "^3.3.2",
     "openai": "^4.86.1",

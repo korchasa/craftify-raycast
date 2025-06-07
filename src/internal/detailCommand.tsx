@@ -1,6 +1,9 @@
 import { Detail, showToast, Toast, ActionPanel, Action } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { LLM } from "./llm";
+import { analyzeUserInput } from "./inputAnalyzer";
+import { fetchYoutubeTranscript } from "./youtubeFetcher";
+import { fetchUrlAndExtractText } from "./urlFetcher";
 
 /**
  * Универсальный компонент для команд, которые выводят результат в Detail
@@ -36,7 +39,16 @@ export function DetailCommand({
         if (!actualInput) {
           throw new Error("No input provided");
         }
-        for await (const chunk of llm.streamComplete(prompt, actualInput, options)) {
+        const { text, isUrl, isYoutubeVideo } = analyzeUserInput(actualInput);
+        let processedInput = text;
+        if (isYoutubeVideo) {
+          setMarkdown("⏬ Downloading YouTube subtitles...");
+          processedInput = await fetchYoutubeTranscript(text);
+        } else if (isUrl) {
+          setMarkdown("🌐 Downloading page text...");
+          processedInput = await fetchUrlAndExtractText(text);
+        }
+        for await (const chunk of llm.streamComplete(prompt, processedInput, options)) {
           if (cancelled) break;
           acc += chunk;
           setMarkdown(acc);

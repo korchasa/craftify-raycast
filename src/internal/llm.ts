@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { Msg } from "@agentic/core";
 import { z, ZodType } from "zod";
-import { mainModel, openaiToken } from "../config";
+import { mainModel, openaiToken } from "./config";
 
 export type Message = {
   role: "system" | "user" | "assistant";

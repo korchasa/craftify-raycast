@@ -1,4 +1,4 @@
-import { translateCommand } from "./services/translateCommand";
+import { translateCommand } from "./internal/translateCommand";
 
 export default async function Command() {
   return translateCommand({

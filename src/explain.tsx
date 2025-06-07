@@ -1,11 +1,12 @@
 import { getSelectedText } from "@raycast/api";
-import { nativeLanguage } from "./config";
-import { DetailCommand } from "./services/detailCommand";
+import { nativeLanguage } from "./internal/config";
+import { DetailCommand } from "./internal/detailCommand";
 
 export default function Command() {
   return (
     <DetailCommand
-      prompt={`###ИНСТРУКЦИИ###
+      prompt={`
+###INSTRUCTIONS###
 
 You MUST ALWAYS:
 - Respond in ${nativeLanguage}

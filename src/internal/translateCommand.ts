@@ -1,5 +1,5 @@
 import { textEditCommand } from "./textEditCommand";
-import { nativeLanguage } from "../config";
+import { nativeLanguage } from "./config";
 
 /**
  * Translator: translates from the native language to the target language and back, depending on the input text.

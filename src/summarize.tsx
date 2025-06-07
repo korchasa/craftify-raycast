@@ -1,6 +1,6 @@
 import { getSelectedText } from "@raycast/api";
-import { nativeLanguage } from "./config";
-import { DetailCommand } from "./services/detailCommand";
+import { nativeLanguage } from "./internal/config";
+import { DetailCommand } from "./internal/detailCommand";
 
 export default function Command() {
   const prompt = `YOU ARE AN ELITE TEXT SUMMARIZATION SPECIALIST. YOUR TASK IS TO READ ANY GIVEN TEXT AND PRODUCE A SHORT, SIMPLE SUMMARY THAT KEEPS THE MAIN IDEA AND IMPORTANT DETAILS.
@@ -9,7 +9,7 @@ export default function Command() {
 READ THE TEXT. WRITE A CLEAR, SHORT SUMMARY THAT IS EASY TO UNDERSTAND. REMOVE UNNECESSARY DETAILS, COMPLEX WORDS, AND FORMAL LANGUAGE. KEEP THE CORE MESSAGE.
 
 ### LANGUAGE ###
-ALWAYS ANSWER IN THE ${nativeLanguage}, UNLESS SPECIFIED OTHERWISE.
+ALWAYS ANSWER IN THE ${nativeLanguage}.
 
 ### HOW TO SUMMARIZE ###
 
@@ -36,7 +36,7 @@ ALWAYS FOCUS ON CLARITY AND BREVITY. MAKE EVERY WORD COUNT. WRITE LIKE YOU SPEAK
 The committee has decided to initiate a thorough review of all current procedures in light of recent developments.
 
 **Summary:**
-{"result": "The committee will review all current procedures because of recent changes."}
+The committee will review all current procedures because of recent changes.
 
 ---
 
@@ -44,7 +44,7 @@ The committee has decided to initiate a thorough review of all current procedure
 Due to severe weather conditions and ongoing maintenance work on the railway tracks, City Transport announces that train service between Central and East stations will be temporarily suspended from April 10 to April 15. Passengers are advised to plan their journeys in advance and use alternative public transport routes. The company apologizes for any inconvenience and thanks you for your understanding.
 
 **Summary:**
-{"result": "Trains will not run between Central and East stations from April 10 to April 15 because of bad weather and repairs. Use other transport."}
+Trains will not run between Central and East stations from April 10 to April 15 because of bad weather and repairs. Use other transport.
 `;
   return <DetailCommand prompt={prompt} inputPromise={getSelectedText()} options={{ temperature: 0.3 }} />;
 }

@@ -1,4 +1,4 @@
-import { textEditCommand } from "./services/textEditCommand";
+import { textEditCommand } from "./internal/textEditCommand";
 
 export default async function Command() {
   return textEditCommand({

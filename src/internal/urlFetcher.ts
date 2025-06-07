@@ -1,7 +1,6 @@
 // src/extract.ts
 import fetch from "node-fetch";
-import { JSDOM } from "jsdom";
-import { Readability } from "@mozilla/readability";
+import { extractContent } from "@wrtnlabs/web-content-extractor";
 
 /**
  * Loads a page by URL and returns the main text content.
@@ -21,24 +20,10 @@ export async function fetchUrlAndExtractText(url: string): Promise<string> {
   }
   const html = await res.text();
 
-  // 2. Parse into DOM
-  const dom = new JSDOM(html, {
-    url, // needed so that relative links work correctly
-    contentType: "text/html",
-  });
-
-  // 3. Apply Readability
-  const reader = new Readability(dom.window.document);
-  const article = reader.parse();
-
-  if (!article) {
-    throw new Error("Failed to extract page content");
-  }
-
-  // article.textContent already contains the "clean" text
-  // You can also use article.title, article.excerpt, article.byline, etc.
-  if (!article.textContent) {
+  // 2. Extract content using web-content-extractor
+  const { content } = extractContent(html);
+  if (!content) {
     throw new Error("Failed to extract article text");
   }
-  return article.textContent.trim();
+  return content.trim();
 }
