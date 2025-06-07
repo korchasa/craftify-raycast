@@ -86,18 +86,18 @@
   },
   "preferences": [
     {
-      "name": "mainModel",
+      "name": "llmModel",
       "type": "textfield",
-      "title": "OpenAI Model",
-      "description": "OpenAI model to use for the extension",
+      "title": "LLM Model",
+      "description": "LLM model to use for the extension",
       "default": "gpt-4.1-mini",
       "required": true
     },
     {
-      "name": "openaiToken",
+      "name": "llmToken",
       "type": "password",
-      "title": "OpenAI API Token",
-      "description": "OpenAI API token to use for the extension",
+      "title": "LLM API Token",
+      "description": "LLM API token to use for the extension",
       "required": true
     },
     {

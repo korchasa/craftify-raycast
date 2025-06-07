@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { Msg } from "@agentic/core";
 import { z, ZodType } from "zod";
-import { mainModel, openaiToken } from "./config";
+import { llmModel, llmToken } from "./config";
 
 export type Message = {
   role: "system" | "user" | "assistant";
@@ -14,18 +14,18 @@ export type CompletionOptions = {
 };
 
 export const OnlyResultSchema = z.object({
-  result: z.string().describe("Исправленный текст"),
+  result: z.string().describe("Text result"),
 });
 
 export class LLM {
   private openai: OpenAI;
 
   constructor() {
-    this.openai = new OpenAI({ apiKey: openaiToken });
+    this.openai = new OpenAI({ apiKey: llmToken });
   }
 
   /**
-   * Определяет провайдера на основе имени модели
+   * Determines the provider based on the model name
    */
   private getProviderFromModel(model: string): "anthropic" | "openai" {
     const modelLowerCase = model.toLowerCase();
@@ -34,36 +34,20 @@ export class LLM {
     } else if (modelLowerCase.startsWith("claude")) {
       return "anthropic";
     } else {
-      // Если не удалось определить, используем Anthropic по умолчанию
-      console.warn(`Неизвестная модель: ${model}, используем Anthropic по умолчанию`);
+      // If unable to determine, use Anthropic by default
+      console.warn(`Unknown model: ${model}, using Anthropic by default`);
       return "anthropic";
     }
   }
 
   // Structured completion (JSON output, validated)
-  async complete(systemPrompt: string, userText: string, options?: Partial<CompletionOptions>): Promise<string> {
-    const mergedOptions = {
-      model: mainModel,
-      temperature: 0.1,
-      max_tokens: 4096,
-      ...options,
-    };
-    const messages = [Msg.system(systemPrompt), Msg.user(userText)];
-    const response = await this.openai.chat.completions.create({
-      ...mergedOptions,
-      messages,
-    });
-    return response.choices[0]?.message?.content ?? "";
-  }
-
-  // Structured completion (JSON output, validated)
-  async completeStructured<T>(
+  async completeSync<T>(
     systemPrompt: string,
     userText: string,
     options?: Partial<CompletionOptions>,
     schema: ZodType<T> = OnlyResultSchema as unknown as ZodType<T>,
   ): Promise<T> {
-    const mergedOptions = { model: mainModel, temperature: 0.1, ...options };
+    const mergedOptions = { model: llmModel, temperature: 0.1, ...options };
     const messages = [Msg.system(systemPrompt), Msg.user(userText)];
     const response = await this.openai.chat.completions.create({
       model: mergedOptions.model,
@@ -77,13 +61,13 @@ export class LLM {
   }
 
   // Streaming completion (yields text chunks as they arrive)
-  async *streamComplete(
+  async *completeByStream(
     systemPrompt: string,
     userText: string,
     options?: Partial<CompletionOptions>,
   ): AsyncGenerator<string, void, unknown> {
     const mergedOptions = {
-      model: mainModel,
+      model: llmModel,
       temperature: 0.1,
       max_tokens: 4096,
       ...options,

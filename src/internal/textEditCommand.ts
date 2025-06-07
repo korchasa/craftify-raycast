@@ -2,13 +2,13 @@ import { getSelectedText, Clipboard, showHUD, showToast, Toast } from "@raycast/
 import { LLM } from "./llm";
 
 /**
- * Универсальная функция для команд, которые изменяют текст в редакторе (перевод, исправление и т.д.)
- * @param prompt - system prompt для LLM
- * @param options - опции для LLM (например, temperature)
- * @param hudMessage - сообщение для HUD при старте
- * @param successMessage - сообщение для HUD при успехе
- * @param errorMessage - сообщение для HUD при ошибке
- * @param parseResult - функция для парсинга результата (по умолчанию result из JSON)
+ * Universal function for commands that modify text in the editor (translation, correction, etc.)
+ * @param prompt - system prompt for LLM
+ * @param options - options for LLM (e.g., temperature)
+ * @param hudMessage - message for HUD at start
+ * @param successMessage - message for HUD on success
+ * @param errorMessage - message for HUD on error
+ * @param parseResult - function for parsing the result (by default, result from JSON)
  */
 export async function textEditCommand({
   prompt,
@@ -29,7 +29,7 @@ export async function textEditCommand({
     const selectedText = await getSelectedText();
     await showHUD(hudMessage);
     const llm = new LLM();
-    const resultObj = await llm.completeStructured(prompt, selectedText, options);
+    const resultObj = await llm.completeSync(prompt, selectedText, options);
     const result = parseResult(resultObj as { result: string });
     await Clipboard.paste(result);
     await showHUD(successMessage);

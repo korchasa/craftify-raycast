@@ -15,13 +15,13 @@ FOLLOW these INSTRUCTIONS carefully for translating the text:
 User message:
 Hi tis is a mesage with \`markdown\` and <b>tegs</b>
 Your answer:
-{"result": "Hi, this is a message with \`markdown\` and <b>tags</b>"}
+Hi, this is a message with \`markdown\` and <b>tags</b>
 
 ###EXAMPLE 2###
 User message:
 Привит это саобщение с \`markdown\`, и <b>тегими</b>
 Your answer:
-{"result": "Привет, это сообщение с \`markdown\` и <b>тегами</b>"}
+Привет, это сообщение с \`markdown\` и <b>тегами</b>
 `,
     options: { temperature: 0.1 },
     hudMessage: "Fixing text...",

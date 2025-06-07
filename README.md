@@ -1,58 +1,35 @@
 # Craftify
 
-Craftify — это набор полезных инструментов для повышения продуктивности прямо в Raycast. Расширение использует OpenAI и другие LLM для перевода, исправления, объяснения и суммирования текста, а также для работы с субтитрами YouTube.
+Craftify is a set of useful tools to boost productivity directly in Raycast. The extension uses OpenAI and other LLMs for translation, correction, explanation, and summarization of text, as well as for working with YouTube subtitles.
 
-## Возможности
+## Features
 
-- Перевод текста между языками (русский, английский, болгарский, украинский)
-- Исправление ошибок в тексте
-- Объяснение сложных текстов простыми словами
-- Суммирование длинных текстов
-- Загрузка и перевод субтитров с YouTube
+- Every command save result to clipboard
+- Commands that change the selected text:
+    + `to-en` - translates text to English
+    + `to-bg` - translates text to Bulgarian
+    + `to-ua` - translates text to Ukrainian
+    + `fix-text` - corrects errors in the text
+- Commands that analyze the text and output the result in Raycast:
+    + `summarize` - creates a summary of the text
+    + `explain` - explains the text in simple language
+    + `simplify` - simplifies the text
+    + if the user selects a URL, the extension tries to extract text from the page at that URL
+    + if the user selects a YouTube URL, the extension tries to extract subtitles from YouTube at that URL
 
-## Логика работы и вывода
+## User settings
 
-- Если выделенный текст содержит только URL, то расширение пытается извлечь текст из страницы по этому URL.
-- Если выделенный текст содержит URL на YouTube, то расширение пытается извлечь субтитры с YouTube по этому URL.
-- Если выделенный текст содержит текст, то расширение работает с ним как с текстом.
+- `nativeLanguage` - user's primary language
+- `llmModel` - LLM model
+- `llmToken` - API key for LLM
 
-## Команды
+## Usage
 
-### `to-main`
+1. Select text in any application.
+2. Call the desired command via Raycast (for example, "Summarize", "Fix Text Errors", etc.).
+3. The result will replace selected text or shown in the Raycast window (depending on the command).
 
-Переводит выделенный текст с любого языка на основной (`mainLanguage`), либо с основного на английский. Автоматически определяет язык предложения.
-
-### `to-bg`
-
-Переводит выделенный текст на болгарский язык.
-
-### `to-ua`
-
-Переводит выделенный текст на украинский язык.
-
-### `fix-text`
-
-Исправляет ошибки в выделенном тексте, сохраняя форматирование (markdown, html-теги и т.д.).
-
-### `summarize`
-
-Создаёт краткое и простое резюме выделенного текста на основном языке.
-
-### `explain`
-
-Объясняет выделенный текст простыми словами, как профессиональный эксперт, на русском языке.
-
-### `youtube-captions`
-
-Скачивает субтитры с YouTube по ссылке, переводит их на основной язык и выводит результат в виде markdown.
-
-## Использование
-
-1. Выделите текст в любой программе.
-2. Вызовите нужную команду через Raycast (например, «Summarize Text», «Fix Text Errors» и т.д.).
-3. Результат будет скопирован в буфер обмена или показан в окне Raycast (в зависимости от команды).
-
-## Зависимости
+## Dependencies
 
 - [@raycast/api](https://www.npmjs.com/package/@raycast/api)
 - [openai](https://www.npmjs.com/package/openai)
@@ -61,6 +38,6 @@ Craftify — это набор полезных инструментов для 
 - [@agentic/stdlib](https://www.npmjs.com/package/@agentic/stdlib)
 - [@anthropic-ai/sdk](https://www.npmjs.com/package/@anthropic-ai/sdk)
 
-## Лицензия
+## License
 
 MIT

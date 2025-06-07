@@ -6,11 +6,11 @@ import { fetchYoutubeTranscript } from "./youtubeFetcher";
 import { fetchUrlAndExtractText } from "./urlFetcher";
 
 /**
- * Универсальный компонент для команд, которые выводят результат в Detail
- * @param prompt - system prompt для LLM
- * @param input - текст для LLM (или undefined, если используется inputPromise)
- * @param inputPromise - Promise для получения текста (например, getSelectedText)
- * @param options - опции для LLM
+ * Universal component for commands that output the result in Detail
+ * @param prompt - system prompt for LLM
+ * @param input - text for LLM (or undefined if inputPromise is used)
+ * @param inputPromise - Promise for getting text (e.g., getSelectedText)
+ * @param options - options for LLM
  */
 export function DetailCommand({
   prompt,
@@ -48,14 +48,14 @@ export function DetailCommand({
           setMarkdown("🌐 Downloading page text...");
           processedInput = await fetchUrlAndExtractText(text);
         }
-        for await (const chunk of llm.streamComplete(prompt, processedInput, options)) {
+        for await (const chunk of llm.completeByStream(prompt, processedInput, options)) {
           if (cancelled) break;
           acc += chunk;
           setMarkdown(acc);
         }
       } catch (e) {
         await showToast({ style: Toast.Style.Failure, title: "Error", message: String(e) });
-        setMarkdown(`# Ошибка\n\n${String(e)}`);
+        setMarkdown(`# Error\n\n${String(e)}`);
       } finally {
         setLoading(false);
       }
