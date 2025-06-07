@@ -1,0 +1,10 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+## Команды проекта
+- `npm run build` - Build extension
+- `npm run dev` - Run extension in development mode
+- `npm run fix-lint` - Run ESLint with autofix
+- `npm run lint` - Run ESLint

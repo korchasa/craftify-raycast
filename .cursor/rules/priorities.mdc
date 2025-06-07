@@ -1,0 +1,15 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# Your priorities
+
+1. Satisfied end users of the application.
+2. A bug-free application.
+3. Satisfaction of your interlocutor.
+4. The absence of "crutches" for tests in the code.
+5. Simple, readable, and extensible code of the application.
+6. Correct architecture of the application.
+7. Compliance of the application with good practices.
+8. Absence of errors in the linter.

@@ -5,44 +5,43 @@ alwaysApply: false
 ---
 # Goal
 
-Ты разрабатываешь проект Craftify.
+You are developing the Craftify project.
 
-Craftify — это набор полезных инструментов для повышения продуктивности прямо в Raycast. Расширение использует OpenAI и другие LLM для перевода, исправления, объяснения и суммирования текста, а также для работы с субтитрами YouTube.
+Craftify is a set of useful tools to boost productivity directly in Raycast. The extension uses OpenAI and other LLMs for translation, correction, explanation, and summarization of text, as well as for working with YouTube subtitles.
 
-## Основные используемые библиотеки и их документация
+## Main libraries used and their documentation
 
-- @raycast/api https://developers.raycast.com/api-reference — API Raycast для создания расширений
-- youtube-transcript https://www.npmjs.com/package/youtube-transcript — Получение субтитров с YouTube
-- @agentic/stdlib https://www.npmjs.com/package/@agentic/stdlib — Утилиты для работы с LLM и агентами
+- @raycast/api https://developers.raycast.com/api-reference — Raycast API for creating extensions
+- youtube-transcript https://www.npmjs.com/package/youtube-transcript — Getting subtitles from YouTube
+- @agentic/stdlib https://www.npmjs.com/package/@agentic/stdlib — Utilities for working with LLMs and agents
 
-## Возможности
+## Features
 
-- Перевод текста между языками (русский, английский, болгарский, украинский)
-- Исправление ошибок в тексте
-- Объяснение сложных текстов простыми словами
-- Суммирование длинных текстов
-- Загрузка и перевод субтитров с YouTube
+- Translation of text between languages (Russian, English, Bulgarian, Ukrainian)
+- Correction of errors in text
+- Explanation of complex texts in simple words
+- Summarization of long texts
+- Downloading and translating subtitles from YouTube
 
-## Команды
+## Commands
 
 ### `to-main`
-Переводит выделенный текст с любого языка на основной (`mainLanguage`), либо с основного на английский. Автоматически определяет язык предложения.
+Translates selected text from any language to the main (`mainLanguage`), or from the main to English. Automatically detects the language of the sentence.
 
 ### `to-bg`
-Переводит выделенный текст на болгарский язык.
+Translates selected text into Bulgarian.
 
 ### `to-ua`
-Переводит выделенный текст на украинский язык.
+Translates selected text into Ukrainian.
 
 ### `fix-text`
-Исправляет ошибки в выделенном тексте, сохраняя форматирование (markdown, html-теги и т.д.).
+Corrects errors in the selected text while preserving formatting (markdown, html tags, etc.).
 
 ### `summarize`
-Создаёт краткое и простое резюме выделенного текста на основном языке.
+Creates a brief and simple summary of the selected text in the main language.
 
 ### `explain`
-Объясняет выделенный текст простыми словами, как профессиональный эксперт, на русском языке.
+Explains the selected text in simple words, like a professional expert, in Russian.
 
 ### `youtube-captions`
-Скачивает субтитры с YouTube по ссылке, переводит их на основной язык и выводит результат в виде markdown.
-
+Downloads subtitles from YouTube by link, translates them into the main language, and outputs the result as markdown.
