@@ -54,7 +54,7 @@
     }
   ],
   "dependencies": {
-    "@agentic/stdlib": "^7.3.2",
+    "@agentic/stdlib": "^7.6.7",
     "@anthropic-ai/sdk": "^0.39.0",
     "@mozilla/readability": "^0.6.0",
     "@raycast/api": "^1.93.1",
