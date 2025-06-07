@@ -56,14 +56,18 @@
   "dependencies": {
     "@agentic/stdlib": "^7.3.2",
     "@anthropic-ai/sdk": "^0.39.0",
+    "@mozilla/readability": "^0.6.0",
     "@raycast/api": "^1.93.1",
     "@raycast/utils": "^1.17.0",
+    "jsdom": "^26.1.0",
+    "node-fetch": "^3.3.2",
     "openai": "^4.86.1",
     "youtube-transcript": "^1.2.1",
     "zod": "^3.25.55"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.11",
+    "@types/jsdom": "^21.1.7",
     "@types/node": "20.8.10",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
