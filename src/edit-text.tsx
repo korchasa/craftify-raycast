@@ -12,7 +12,7 @@ export default function Command() {
       await modifyTextWithLLMCommand({
         prompt: prompt + "\n\nReturn your answer as a JSON object with one field: 'result'",
         hudMessage: "Applying prompt...",
-        successMessage: "Text edited and pasted",
+        successMessage: "Text edited",
         errorMessage: "Failed to edit text",
       });
     },

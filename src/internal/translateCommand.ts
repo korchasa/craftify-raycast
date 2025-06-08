@@ -45,7 +45,7 @@ Your answer:
     prompt,
     options: { temperature: 0.0 },
     hudMessage: "Translating text...",
-    successMessage: "Text translated and copied to clipboard",
+    successMessage: "Text translated",
     errorMessage: "Cannot translate text",
   });
 }

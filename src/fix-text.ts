@@ -25,7 +25,7 @@ Your answer:
 `,
     options: { temperature: 0.1 },
     hudMessage: "Fixing text...",
-    successMessage: "Text fixed and copied to clipboard",
+    successMessage: "Text fixed",
     errorMessage: "Cannot fix text",
   });
 }
