@@ -4,6 +4,7 @@ import { LLM } from "./llm";
 import { analyzeUserInput } from "./inputAnalyzer";
 import { fetchYoutubeTranscript } from "./youtubeFetcher";
 import { fetchUrlAndExtractText } from "./urlFetcher";
+import { captureException } from "@raycast/api";
 
 /**
  * Universal component for commands that output the result in Detail
@@ -54,6 +55,7 @@ export function DetailCommand({
           setMarkdown(acc);
         }
       } catch (e) {
+        captureException(e);
         await showToast({ style: Toast.Style.Failure, title: "Error", message: String(e) });
         setMarkdown(`# Error\n\n${String(e)}`);
       } finally {

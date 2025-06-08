@@ -1,6 +1,7 @@
 // src/extract.ts
 import fetch from "node-fetch";
 import { extractContent } from "@wrtnlabs/web-content-extractor";
+import { captureException } from "@raycast/api";
 
 /**
  * Loads a page by URL and returns the main text content.
@@ -16,6 +17,7 @@ export async function fetchUrlAndExtractText(url: string): Promise<string> {
     },
   });
   if (!res.ok) {
+    captureException(new Error(`Failed to load page: ${res.status} ${res.statusText}`));
     throw new Error(`Failed to load page: ${res.status} ${res.statusText}`);
   }
   const html = await res.text();
@@ -23,6 +25,7 @@ export async function fetchUrlAndExtractText(url: string): Promise<string> {
   // 2. Extract content using web-content-extractor
   const { content } = extractContent(html);
   if (!content) {
+    captureException(new Error("Failed to extract article text"));
     throw new Error("Failed to extract article text");
   }
   return content.trim();

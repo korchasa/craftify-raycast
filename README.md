@@ -29,14 +29,16 @@ Craftify is a set of useful tools to boost productivity directly in Raycast. The
 2. Call the desired command via Raycast (for example, "Summarize", "Fix Text Errors", etc.).
 3. The result will replace selected text or shown in the Raycast window (depending on the command).
 
+## ToDo
+
+- Punto Switcher replacement
+- Apply custom prompt for selected text
+
 ## Dependencies
 
 - [@raycast/api](https://www.npmjs.com/package/@raycast/api)
-- [openai](https://www.npmjs.com/package/openai)
 - [youtube-transcript](https://www.npmjs.com/package/youtube-transcript)
-- [zod](https://www.npmjs.com/package/zod)
 - [@agentic/stdlib](https://www.npmjs.com/package/@agentic/stdlib)
-- [@anthropic-ai/sdk](https://www.npmjs.com/package/@anthropic-ai/sdk)
 
 ## License
 

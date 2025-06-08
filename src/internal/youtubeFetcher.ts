@@ -1,4 +1,5 @@
 import { YoutubeTranscript } from "youtube-transcript";
+import { captureException } from "@raycast/api";
 
 export async function fetchYoutubeTranscript(url: string, attempts = 3): Promise<string> {
   let lastError = null;
@@ -10,6 +11,7 @@ export async function fetchYoutubeTranscript(url: string, attempts = 3): Promise
       }
       return transcript.map((t) => t.text).join(" ");
     } catch (err) {
+      captureException(err);
       lastError = err;
       if (attempt < attempts) {
         await new Promise((res) => setTimeout(res, 500));

@@ -1,5 +1,6 @@
 import { getSelectedText, Clipboard, showHUD, showToast, Toast } from "@raycast/api";
 import { LLM } from "./llm";
+import { captureException } from "@raycast/api";
 
 /**
  * Universal function for commands that modify text in the editor (translation, correction, etc.)
@@ -34,6 +35,7 @@ export async function textEditCommand({
     await Clipboard.paste(result);
     await showHUD(successMessage);
   } catch (error) {
+    captureException(error);
     await showToast({
       style: Toast.Style.Failure,
       title: errorMessage,

@@ -19,4 +19,4 @@ alwaysApply: true
   - Inline code
   - Public methods
   - Private methods, from higher-level to lower-level
-- Use Jest and Jest-Cucumber to test project
+- Use captureException in all try/catch https://developers.raycast.com/api-reference/utilities#captureexception
