@@ -51,6 +51,12 @@
       "title": "Simplify",
       "description": "Simplify texts, web pages, youtube videos, etc.",
       "mode": "view"
+    },
+    {
+      "name": "edit-text",
+      "title": "Edit Text by Prompt",
+      "description": "Изменить выделенный текст по пользовательскому промпту",
+      "mode": "view"
     }
   ],
   "dependencies": {

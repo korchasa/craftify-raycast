@@ -1,7 +1,7 @@
-import { textEditCommand } from "./internal/textEditCommand";
+import { modifyTextWithLLMCommand } from "./internal/modifyTextWithLLMCommand";
 
 export default async function Command() {
-  return textEditCommand({
+  return modifyTextWithLLMCommand({
     prompt: `You will act as an EXPERT editor.
 
 ### INSTRUCTIONS ###

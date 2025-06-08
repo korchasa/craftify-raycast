@@ -11,7 +11,7 @@ import { captureException } from "@raycast/api";
  * @param errorMessage - message for HUD on error
  * @param parseResult - function for parsing the result (by default, result from JSON)
  */
-export async function textEditCommand({
+export async function modifyTextWithLLMCommand({
   prompt,
   options = {},
   hudMessage = "Processing...",

@@ -1,4 +1,4 @@
-import { textEditCommand } from "./textEditCommand";
+import { modifyTextWithLLMCommand } from "./modifyTextWithLLMCommand";
 import { nativeLanguage } from "./config";
 
 /**
@@ -41,7 +41,7 @@ Your answer:
 {"result": "${nativeLangExample}"}
 `;
 
-  return textEditCommand({
+  return modifyTextWithLLMCommand({
     prompt,
     options: { temperature: 0.0 },
     hudMessage: "Translating text...",
