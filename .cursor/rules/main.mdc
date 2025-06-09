@@ -22,11 +22,12 @@ Craftify is a set of useful tools to boost productivity directly in Raycast. The
 - Explanation of complex texts in simple words
 - Summarization of long texts
 - Downloading and translating subtitles from YouTube
+- Applying custom prompts to selected text
 
 ## Commands
 
-### `to-main`
-Translates selected text from any language to the main (`mainLanguage`), or from the main to English. Automatically detects the language of the sentence.
+### `to-en`
+Translates selected text into English.
 
 ### `to-bg`
 Translates selected text into Bulgarian.
@@ -43,5 +44,5 @@ Creates a brief and simple summary of the selected text in the main language.
 ### `explain`
 Explains the selected text in simple words, like a professional expert, in Russian.
 
-### `youtube-captions`
-Downloads subtitles from YouTube by link, translates them into the main language, and outputs the result as markdown.
+### `edit-text`
+Allows you to apply any custom prompt to the selected text and replace it with the result.

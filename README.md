@@ -10,6 +10,7 @@ Craftify is a set of useful tools to boost productivity directly in Raycast. The
     + `to-bg` - translates text to Bulgarian
     + `to-ua` - translates text to Ukrainian
     + `fix-text` - corrects errors in the text
+    + `edit-text` - applies a user prompt to the selected text
 - Commands that analyze the text and output the result in Raycast:
     + `summarize` - creates a summary of the text
     + `explain` - explains the text in simple language
@@ -26,7 +27,7 @@ Craftify is a set of useful tools to boost productivity directly in Raycast. The
 ## Usage
 
 1. Select text in any application.
-2. Call the desired command via Raycast (for example, "Summarize", "Fix Text Errors", etc.).
+2. Call the desired command via Raycast (for example, "Summarize", "Fix Text Errors", "Edit Text", etc.).
 3. The result will replace selected text or shown in the Raycast window (depending on the command).
 
 ## ToDo
